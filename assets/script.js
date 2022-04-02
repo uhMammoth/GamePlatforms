@@ -29,4 +29,4 @@ var divClicked = function (){
 }
 
 eventlistenerforsidebarEl
-apiCall();
+// apiCall();

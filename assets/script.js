@@ -1,37 +1,56 @@
-// get list of newest games
-// var apiCall = function(){
-//     var apiKey = ff8332b243a54f7db9e5249071a23ba5;
-//     var listGames = 'https://api.rawg.io/api/games?key=' + apiKey;
-//     fetch(listGames)
-//         .then(response => response.json())
-//         .then(data => sideBarHandler(data));
+// Get Game info
+var searchFormEl = document.querySelector("#searchBar");
+var gameInputEl = document.querySelector("#searchName");
 
-// }
+var gameSubmit = function(event) {
+    $('#listGames').remove();
+    event.preventDefault();
 
-// var sideBarHandler = function (data){
+  var gameName = gameInputEl.value;
+  if (gameName) {
+    getRawgapi(gameName)
+    gameInputEl.value = "";
+  };
+  
+}
 
-//     for (let index = 0; index < 5; index++) {
-        
-//         createSideBarEl();
-//         div title = data.name[i]
-//         div.backgroundimg = data.thumbnail
-//     }
-    
-// }
+function getRawgapi(gameName) {
+  var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
+  var apiUrl = "https://api.rawg.io/api/games?key=" + apiKey +"&search="+ gameName.replace(/\s/g, "-") +"&search_exact=true";
 
-// var createSideBarEl = function (){
-//     $('#sidebar').append('div');
-//     div title
-// }
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => displayGameData(data));
+}
 
-// var divClicked = function (){
-//     searchInput = createSideBarEl.text
-// }
+function dropDown(data){
+    $("#searchBar")
+  .append("<select name='game' id='listGames' class='w-1/4 p-3'></select>");
+  for(let i = 1; i < data.results.length; i++){
+  var gameName = data.results[i].name;
+  $("#listGames").append("<option value = '"+ gameName +"'>"+ gameName +"</option>");
+  }
+  
+}
 
 // eventlistenerforsidebarEl
 // apiCall();
 var searchArray;
 funciton(data){
 
-    $('option').change(function);
+function displayGameData(data) {
+  var img = data.background_image;
+  dropDown(data);
+//   $("#gameImg").empty()
+//   .append("<img src="+ img +">");
+  console.log(data);
 }
+
+
+
+
+searchFormEl.addEventListener("submit", gameSubmit)
+$(document).on('change', '#listGames', function(){
+    //search array with select value and move on to call functions that update game information
+    console.log($(this).val());
+});

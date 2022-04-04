@@ -1,6 +1,7 @@
 // Get Game info
 var searchFormEl = document.querySelector("#searchBar");
 var gameInputEl = document.querySelector("#searchName");
+var searchedList;
 
 var gameSubmit = function(event) {
     $('#listGames').remove();
@@ -28,13 +29,14 @@ function dropDown(data){
   .append("<select name='game' id='listGames' class='w-1/4 p-3'></select>");
   for(let i = 0; i < data.results.length; i++){
   var gameName = data.results[i].name;
-  $("#listGames").append("<option value = '"+ gameName +"'>"+ gameName +"</option>");
+  $("#listGames").append("<option value = '"+ i +"'>"+ gameName +"</option>");
   }
   
 }
 
 
 function displayGameData(data) {
+    searchedList = data.results;
   var img = data.background_image;
   dropDown(data);
 //   $("#gameImg").empty()
@@ -42,11 +44,16 @@ function displayGameData(data) {
   console.log(data);
 }
 
+function gameHandler(data){
+    //get img title metascore platforms description
+    //add and create elements to main game display board
+}
 
+searchFormEl.addEventListener("submit", gameSubmit);
 
-
-searchFormEl.addEventListener("submit", gameSubmit)
 $(document).on('change', '#listGames', function(){
-    //search array with select value and move on to call functions that update game information
-    console.log($(this).val());
+    console.log(searchedList[$(this).val()]);
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => gameHandler(data));
 });

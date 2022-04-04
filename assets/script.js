@@ -2,7 +2,7 @@
 var searchFormEl = document.querySelector("#searchBar");
 var gameInputEl = document.querySelector("#searchName");
 var searchedList;
-
+var apiUrl;
 var gameSubmit = function(event) {
     $('#listGames').remove();
     event.preventDefault();
@@ -37,7 +37,7 @@ function dropDown(data){
 
 function displayGameData(data) {
     searchedList = data.results;
-  var img = data.background_image;
+  // var img = data.background_image;
   dropDown(data);
 //   $("#gameImg").empty()
 //   .append("<img src="+ img +">");
@@ -47,13 +47,17 @@ function displayGameData(data) {
 function gameHandler(data){
     //get img title metascore platforms description
     //add and create elements to main game display board
+    var img = data.background_image;
+    $("#gameImg").empty()
+  .append("<img src="+ img +">");
 }
-
-searchFormEl.addEventListener("submit", gameSubmit);
 
 $(document).on('change', '#listGames', function(){
     console.log(searchedList[$(this).val()]);
-    fetch(apiUrl)
+    fetch(this.val)
         .then(response => response.json())
         .then(data => gameHandler(data));
 });
+
+searchFormEl.addEventListener("submit", gameSubmit);
+

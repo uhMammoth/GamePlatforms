@@ -26,7 +26,7 @@ function getRawgapi(gameName) {
 function dropDown(data){
     $("#searchBar")
   .append("<select name='game' id='listGames' class='w-1/4 p-3'></select>");
-  for(let i = 1; i < data.results.length; i++){
+  for(let i = 0; i < data.results.length; i++){
   var gameName = data.results[i].name;
   $("#listGames").append("<option value = '"+ gameName +"'>"+ gameName +"</option>");
   }

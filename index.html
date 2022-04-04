@@ -15,13 +15,16 @@
 
 <div class="container border-content border-2 basis-3/4 h-full p-2">
     <div class="flex justify-center">
-        <input type="search" id="searchBar" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto block"  placeholder="Search Here">
-        <button class="btn px-3 py-2.5 inline-block bg-blue-700 text-white ">Search</button>
+      <form id="searchBar" class="w-full whitespace-nowrap">
+        <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
+        <button type="submit" class="btn px-3 py-2.5 bg-blue-700 text-white ">Search</button>
+        <!-- <select name="game" id="listGames" class="w-1/4 p-3"></select> -->
+      </form>   
     </div>
 </div>
 
 <div class="container-xl flex flex-row mx-auto border-2">
-  <div class="container border-2 box-border basis-1/4 mr-1 overflow-y-scroll">
+  <div class="container border-2 box-border basis-1/4 mr-1">
       <div class="container">
           <h1 class="text-3xl p-3 text-white bg-gradient-to-r from-blue-300 to-indigo-700 text-center">
               New Game Releases
@@ -49,8 +52,8 @@
     
 <div class="container p-2 m-2 mt-0 border-2">
     <div class="container border-2 p-3 flex justify-between">
-      <div class="container border-2 h-80 w-2/5">
-        <img class="object-fill h-full w-full" src="./assets/images/elden_ring.jpg" alt="elden ring">
+      <div id="gameImg" class="container border-2 h-80 w-2/5">
+        
       </div>
       <div class="container border-2 w-3/4">
         <h1 class="text-5xl p-3 text-white bg-gradient-to-r from-blue-300 to-indigo-700 text-center">
@@ -74,13 +77,13 @@
             </div>
         </div>
         <div class="container border-2">
-            <p class="my-2 p-2 w-1/4 bg-red-600 text-white rounded-full text-xl">Metacritic score</p> 
-            <p class="my-2 p-2 w-1/4 bg-green-500 text-white rounded-full text-xl">Release date</p>
+            <p id="metaScore"class="my-2 p-2 w-1/4 bg-red-600 text-white rounded-full text-xl">Metacritic score</p> 
+            <p id="release" class="my-2 p-2 w-1/4 bg-green-500 text-white rounded-full text-xl">Release date</p>
         </div>
       </div>        
     </div>
     <div class="container border-2 my-3">
-        <p class="text-2xl p-2 leading-normal">
+        <p id="description" class="text-2xl p-2 leading-normal">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi 
             repellat eum ipsam quod debitis distinctio quasi dignissimos voluptate aliquam autem, 
             delectus nisi totam a inventore laudantium id ex molestias incidunt?
@@ -88,10 +91,10 @@
     </div>
     
     <div class="container border-2 p-3 my-2 flex justify-center">
-        <div class="container box-border h-80 w-3/4 p-4 border-4">Trailer</div>  
+        <div id="trailer" class="container box-border h-80 w-3/4 p-4 border-4">Trailer</div>  
         
     </div>
-    <div class="container border-2 flex justify-around p-3 overflow-x-scroll">
+    <div class="container border-2 flex justify-around p-3">
         <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
         <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
         <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">screenshot</div>

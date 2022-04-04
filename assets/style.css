@@ -7,3 +7,15 @@
     --primary-color: rgb(63, 63, 230);
     --secondary-color: rgb(0, 24, 130);
 }
+
+#gameImg {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    overflow: hidden
+}
+#gameImg img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}

@@ -9,107 +9,58 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-<header class="text-center">
-    <h1 class="text-5xl p-6 text-white bg-gradient-to-r from-blue-300 to-indigo-700">Game Platforms</h1>
-</header>
+    <header class="text-center">
+        <h1 class="text-5xl p-6 text-white bg-black">Game Platforms</h1>
+    </header>
+    <main class="grid grid-cols-5 h-screen">
+        <section id="left-column" class="col-span-1 bg-yellow-100 text-center">
+            <div class="h-28 bg-gray-500 m-3 rounded">background img <h1>title</h1></div>
+            <div class="h-28 bg-gray-500 m-3 rounded"></div>
+            <div class="h-28 bg-gray-500 m-3 rounded"></div>
+            <div class="h-28 bg-gray-500 m-3 rounded"></div>
+        </section>    
 
-<div class="container-xl flex flex-row mx-auto border-2">
 
-  <div class="container border-2 box-border basis-1/4 mr-1 overflow-y-scroll">
-      <div class="container">
-          <h1 class="text-3xl p-3 text-white bg-gradient-to-r from-blue-300 to-indigo-700 text-center">
-              New Game Releases
-            </h1>
-          <div class="border-2 p-2 my-3 border-content h-80">
-            <p class="text-center">Elden Ring</p>
-            <div class="container border-2 mt-2 h-60">
-              <img class="object-fill h-full w-full" src="./assets/images/elden_ring.jpg" alt="elden ring">
-            </div>
-          </div> 
-          <div class="border-2 p-2 my-3 border-content h-80">
-              game 2
-          </div>
-          <div class="border-2 p-2 my-3 border-content h-80">
-              game 3
-          </div>
-          <div class="border-2 p-2 my-3 border-content h-80">
-              game 4
-          </div>
-          <div class="border-2 p-2 my-3 border-content h-80">
-              game 5
-         </div>          
-  </div>
-  </div>
-  <div class="container border-content border-2 basis-3/4 h-full p-2 mr-1">
-    <div class="flex justify-center">
-        <div class="w-11/12">
-            <div class="input-group relative flex flex-wrap items-stretch w-full mb-2">
-                <input type="search" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto block" placeholder="Search">
-                <button class="btn inline-block px-6 py-2.5 bg-blue-700 text-white font-medium text-s leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" viewBox="0 0 512 512"></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-<div class="container p-2 m-2 mt-0 border-2">
-    <div class="container border-2 p-3 flex justify-between">
-      <div class="container border-2 h-80 w-2/5">
-        <img class="object-fill h-full w-full" src="./assets/images/elden_ring.jpg" alt="elden ring">
-      </div>
-      <div class="container border-2 w-3/4">
-        <h1 class="text-5xl p-3 text-white bg-gradient-to-r from-blue-300 to-indigo-700 text-center">
-            Elden Ring
-        </h1>
-        <div class="container border-2 flex justify-center">
-            <svg width="100" height="100">               
-                <circle cx="50" cy="50" r="30" stroke="black" stroke-width="4" fill="purple" />
-            </svg>
-            <svg width="100" height="100">
-                <circle cx="50" cy="50" r="30" stroke="black" stroke-width="4" fill="red" />
-            </svg>
-            <svg width="100" height="100">
-                <circle cx="50" cy="50" r="30" stroke="black" stroke-width="4" fill="blue" />
-            </svg>
-            <svg width="100" height="100">
-                <circle cx="50" cy="50" r="30" stroke="black" stroke-width="4" fill="green" />
-            </svg>
-            <div class="mt-4 w-1/12 h-full">
-                <img src="./assets/images/xbox.png" class="rounded-full">
-            </div>
-        </div>
-        <div class="container border-2">
-            <p class="my-2 p-2 w-1/4 bg-red-600 text-white rounded-full text-xl">Metacritic score</p> 
-            <p class="my-2 p-2 w-1/4 bg-green-500 text-white rounded-full text-xl">Release date</p>
+        <section id="right-column" class="col-span-4 bg-blue-300 text-center">
             
-        </div>
-      </div>        
-    </div>
-    <div class="container border-2 my-3">
-        <p class="text-2xl p-2 leading-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi 
-            repellat eum ipsam quod debitis distinctio quasi dignissimos voluptate aliquam autem, 
-            delectus nisi totam a inventore laudantium id ex molestias incidunt?
-        </p>
-    </div>
-    
-    <div class="container border-2 p-3 my-2 flex justify-center">
-        <div class="container box-border h-80 w-3/4 p-4 border-4">Trailer</div>  
-        
-    </div>
-    <div class="container border-2 flex justify-around p-3 overflow-x-scroll">
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">screenshot</div>
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">video</div>
-    </div>
-</div>
-</div>
+            <form id="searchForm" action="" class="mx-auto my-2">
+                <input type="text" placeholder="Search" class="rounded-l-lg p-1">
+                <button type="submit" class="rounded-r-lg bg-gray-500 p-1">Submit</button> 
+                <select name="game" id="" class="mx-auto mt-1 p-1 rounded">
+                    <option value="uhhh">uhhh</option>
+                </select>           
+            </form>
 
-</div>
-<footer class="text-center">
-    <h1 class="text-5xl p-6 text-white bg-gradient-to-r from-blue-300 to-indigo-700">Footer</h1>
-</footer>
+
+
+
+
+
+            <div id="gameInfo" class="grid grid-cols-5 bg-gray-500 mx-3 rounded">
+                <div class="col-span-2 h-28 text-white bg-black m-3 mr-0">img</div>
+                <div class="col-span-3 h-28 text-white bg-black m-3">title platforms score</div>
+                <div class="col-span-5 h-28 text-white bg-black m-3 mt-0">description</div>
+
+                <div class="col-span-1 h-28 text-white bg-black m-3 mt-0">screenshot</div>
+                <div class="col-span-1 h-28 text-white bg-black m-3 mt-0">screenshot</div>
+                <div class="col-span-1 h-28 text-white bg-black m-3 mt-0">screenshot</div>
+                <div class="col-span-1 h-28 text-white bg-black m-3 mt-0">screenshot</div>
+                <div class="col-span-1 h-28 text-white bg-black m-3 mt-0">screenshot</div>
+            </div>
+            <!-- <div id="gameSiblings" class="h-1/5 bg-gray-500 mx-3 rounded">
+                <div class=" h-28 text-white bg-black">something</div>
+            </div> -->
+            
+
+
+
+
+
+        </section>
+    </main>
+    <footer>
+        <div id="footer" class="h-28 text-white bg-black"></div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/script.js"></script>

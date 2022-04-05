@@ -1,6 +1,6 @@
 // Get Game info
 var testing = function(){
-  var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=elden%20ring%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
+  var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=halo%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
   
   fetch(aUrl)
     .then(response => response.json())
@@ -22,8 +22,7 @@ var gameSubmit = function(event) {
   var gameName = $('#searchName').val();
   $('#searchName').val('');
   if (gameName) {
-    getRawgapi(gameName)
-    gameInputEl.value = "";
+    getRawgapi(gameName);
   };
   
 }
@@ -49,20 +48,26 @@ function dropDown(data){
   
 }
 
+function embedVideo(data){
+  
+}
 
 function displayGameData(data) {
   searchedList = data.results;
   // var img = data.background_image;
   dropDown(data);
-  
-  console.log(data);
 }
 
 $(document).on('change', '#listGames', function(){
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var gameUrl = "https://api.rawg.io/api/games/"+ searchedList[$(this).val()].slug +"?key=" + apiKey;
   
-  console.log(searchedList[$(this).val()].slug);
+  var youtubeSearch = searchedList[$(this).val()].name;  
+  var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+ youtubeSearch +"game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
+  fetch(youtubeUrl)
+    .then(response => response.json())
+    .then(data => embedVideo(data));
+
   fetch(gameUrl)
       .then(response => response.json())
       .then(data => gameHandler(data));
@@ -72,7 +77,6 @@ function gameHandler(data) {
   //get img title metascore platforms description
   //add and create elements to main game display board
   var img = data.background_image;
-  console.log(data);
   $("#gameImg").empty()
   .append("<img src="+ img +">");
   $(".gameTitle h1").empty()
@@ -121,7 +125,7 @@ var releasedGames = function() {
         response.json().then(function(data) {
 
         releaseContainer(data.results);        
-        console.log(data);
+        
         })
       }        
     })

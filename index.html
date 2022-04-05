@@ -12,12 +12,25 @@
 <body>
     <header class="text-center">
         <h1 class="text-5xl p-6 text-white bg-black font-mine">Game Platforms</h1>
+        <nav class="bg-black">
+            <ul class="flex">
+                <li class="flex-1 mr-2">
+                    <a class="text-center block border rounded py-2 px-4 text-white text-xl" href="#about">About</a>
+                </li>
+                <li class="flex-1 mr-2">
+                    <a class="text-center block border rounded py-2 px-4 text-white text-xl" href="#APIlinks">APIs</a>
+                </li>
+                <li class="flex-1 mr-2">
+                    <a class="text-center block border rounded py-2 px-4 text-white text-xl" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    
-<div class="container border-content border-2 basis-3/4 h-full p-2 mx-auto bg-zinc-300">
+<div class="hero" alt="different gaming controllers"></div>   
+<div class="container border-content basis-3/4 h-full p-2 mx-auto bg-zinc-300">
     <div class="flex justify-center">
       <form id="searchBar" class="w-full whitespace-nowrap">
-        <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
+        <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
         <button type="submit" class="btn px-3 py-2.5 bg-black rounded-full text-white">Search</button>
         <!-- <select name="game" id="listGames" class="w-1/4 p-3"></select> -->
       </form>   
@@ -25,7 +38,7 @@
 </div>
 
 <div class="container-xl flex flex-row mx-auto border-2 justify-center">
-  <div class="container border-2 box-border basis-1/4 mr-1 max-w-sm min-w-24rem overflow-y-scroll h-64rem">
+  <div class="container box-border basis-1/4 mr-1 max-w-sm min-w-24rem overflow-y-scroll h-64rem">
       <div id="release-container" class="container">
           <h1 class="text-3xl p-3 text-white bg-black text-center font-mine">
               New Releases
@@ -53,10 +66,10 @@
     
 <div class="container p-2 m-2 mt-0 border-2">
     <div class="container border-2 p-3 flex justify-between">
-      <div id="gameImg" class="container border-2 h-80 w-2/5">
+      <div id="gameImg" class="container border-2 h-50 w-2/5">
         
       </div>
-      <div class="container border-2 w-3/4">
+      <div class="container border-2 w-3/5">
         <h1 class="text-5xl p-3 text-white bg-black text-center font-mine">
             Game Title
         </h1>
@@ -69,7 +82,7 @@
         </div>
       </div>        
     </div>
-    <div class="container border-2 my-3">
+    <div class="container my-3">
         <p id="description" class="text-2xl p-2 leading-normal">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi 
             repellat eum ipsam quod debitis distinctio quasi dignissimos voluptate aliquam autem, 
@@ -77,23 +90,22 @@
         </p>
     </div>
     
-    <div class="container border-2 p-3 my-2 flex justify-center">
-        <div id="trailer" class="container box-border h-80 w-3/4 p-4 border-4">Trailer</div>  
+    <div class="container p-3 my-2 flex justify-center">
+        <div id="trailer" class="container box-border h-80 w-3/4 p-4">Trailer</div>  
         
     </div>
-    <div class="container border-2 flex justify-around p-3">
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">screenshot</div>
-        <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">video</div>
+    <div class="container flex justify-around p-3">
+        <div class="container m-2 box-border h-40 w-1/4 p-4">image</div>
+        <div class="container m-2 box-border h-40 w-1/4 p-4">image</div>
+        <div class="container m-2 box-border h-40 w-1/4 p-4">screenshot</div>
+        <div class="container m-2 box-border h-40 w-1/4 p-4">video</div>
     </div>
 </div>
 </div>
 
 </div>
 <footer class="text-center">
-    <h1 class="text-5xl p-6 text-white bg-black font-mine">Footer</h1>
-    
+    <h1 class="text-5xl p-6 text-white bg-black font-mine">Thank you for visiting our site!</h1> 
 © 2022 GitHub, Inc.
 Terms
 Privacy
@@ -106,7 +118,6 @@ API
 Training
 Blog
 About
-
 </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

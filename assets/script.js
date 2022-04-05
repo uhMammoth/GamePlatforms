@@ -11,7 +11,6 @@ var gameSubmit = function(event) {
   $('#searchName').val('');
   if (gameName) {
     getRawgapi(gameName)
-    gameInputEl.value = "";
   };
   
 }
@@ -90,8 +89,8 @@ $('#searchBar').on("submit", gameSubmit);
 // Released games
 
 // Set var for release date
-var thisMonth = moment().format("YYYY-MM-01");
-var today = moment().format("YYYY-MM-DD")
+// var thisMonth = moment().format("YYYY-MM-01");
+// var today = moment().format("YYYY-MM-DD")
 
 
 var releaseContainerEl = document.querySelector("#release-container");
@@ -101,7 +100,7 @@ var releasedGames = function() {
 
     // set dates range = 1st of this month to today
     var apiUrl = 
-    "https://api.rawg.io/api/games?dates=" + thisMonth + "," + today + "&key=ff8332b243a54f7db9e5249071a23ba5";
+    "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&ordering=-released";
 
     fetch(apiUrl).then(function(response) {
 

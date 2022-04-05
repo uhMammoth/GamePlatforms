@@ -1,4 +1,16 @@
 // Get Game info
+var testing = function(){
+  var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=elden%20ring%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
+  
+  fetch(aUrl)
+    .then(response => response.json())
+    .then(data => something(data));
+}
+var something = function(data){
+  console.log(data);
+}
+
+testing();
 
 var searchedList;
 

@@ -62,3 +62,73 @@ $(document).on('change', '#listGames', function(){
 
 $('#searchBar').on("submit", gameSubmit);
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Jin starts here //
+
+// Released games
+
+// Set var for release date
+var thisMonth = moment().format("YYYY-MM-01");
+var today = moment().format("YYYY-MM-DD")
+
+
+var releaseContainerEl = document.querySelector("#release-container");
+
+// API for released game list
+var releasedGames = function() {
+
+    // set dates range = 1st of this month to today
+    var apiUrl = 
+    "https://api.rawg.io/api/games?dates=" + thisMonth + "," + today + "&key=ff8332b243a54f7db9e5249071a23ba5";
+
+    fetch(apiUrl).then(function(response) {
+
+      if(response.ok) {
+        response.json().then(function(data) {
+
+        releaseContainer(data.results);        
+        console.log(data);
+        })
+      }        
+    })
+}
+
+// Set release games container
+var releaseContainer = function(games) {
+
+    for (var i = 0; i < games.length; i++) {
+    
+        var getContainer = document.createElement("div");
+        getContainer.classList = "container bg-zinc-800 border-2 p-2 my-3 border-content h-80 text-center";
+        getContainer.setAttribute("data-release-container", i);
+        var getSpan = document.createElement("span");
+        getSpan.classList = "text-white text-xl";
+        var getImgCont = document.createElement("div");
+        getImgCont.classList = "container border-2 border-zinc-800 mt-2 h-60";
+        var getImgSrc = document.createElement("img");
+        getImgSrc.classList = "object-fill h-full w-full";
+
+        releaseContainerEl.append(getContainer);
+        getContainer.append(getSpan);
+        getImgCont.append(getImgSrc);
+        getContainer.append(getImgCont);
+
+        // Add game title to the span
+        var titleName = getSpan.textContent;
+        titleName = games[i].name;
+        getSpan.append(titleName);       
+        
+        // Add game img to the img element
+        if (games[i].background_image) {
+            getImgSrc.setAttribute("src", games[i].background_image);
+            getImgSrc.setAttribute("alt", games[i].name);
+        } 
+    }
+}
+
+
+releasedGames();
+
+// Jin ends here
+///////////////////////////////////////////////////////////////////////////////////////////////

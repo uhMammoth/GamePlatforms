@@ -1,6 +1,5 @@
 // Get Game info
-var searchFormEl = document.querySelector("#searchBar");
-var gameInputEl = document.querySelector("#searchName");
+
 var searchedList;
 var apiUrl;
 
@@ -8,7 +7,7 @@ var gameSubmit = function(event) {
     $('#listGames').remove();
     event.preventDefault();
 
-  var gameName = gameInputEl.value;
+  var gameName = $('#searchName').val();
   if (gameName) {
     getRawgapi(gameName)
     gameInputEl.value = "";
@@ -28,6 +27,7 @@ function getRawgapi(gameName) {
 function dropDown(data){
     $("#searchBar")
   .append("<select name='game' id='listGames' class='w-1/4 p-3'></select>");
+  $('#listGames').append("<option value = '"+ i +"'>Select a Game</option>");
   for(let i = 0; i < data.results.length; i++){
   var gameName = data.results[i].name;
   $("#listGames").append("<option value = '"+ i +"'>"+ gameName +"</option>");
@@ -60,5 +60,5 @@ $(document).on('change', '#listGames', function(){
         .then(data => gameHandler(data));
 });
 
-searchFormEl.addEventListener("submit", gameSubmit);
+$('#searchBar').on("submit", gameSubmit);
 

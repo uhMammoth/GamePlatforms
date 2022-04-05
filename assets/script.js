@@ -75,7 +75,7 @@ function gameHandler(data) {
   console.log(data);
   $("#gameImg").empty()
   .append("<img src="+ img +">");
-  $(".container h1").empty()
+  $(".gameTitle h1").empty()
   .append(data.name);
   $("#description").empty()
   .append(data.description);

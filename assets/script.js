@@ -10,8 +10,7 @@ var gameSubmit = function(event) {
   var gameName = $('#searchName').val();
   $('#searchName').val('');
   if (gameName) {
-    getRawgapi(gameName)
-    gameInputEl.value = "";
+    getRawgapi(gameName);
   };
   
 }

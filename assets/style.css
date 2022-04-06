@@ -29,14 +29,16 @@
     min-width: 100%;
     min-height: 100%
 }
-.hero {
-    height: 300px;
+.bg-img {
+    height: auto;
     width: 100%;
     margin-bottom: 5px;
     margin-top: 5px;
-    background-image: url("/assets/images/\ game\ controls.jpeg");
-    background-size: cover;
-    background-position: center;
+    background-image: url("./images/bg-img.jpeg");
+    background-size: fill;
+    opacity: 0.5;
+    background-position: center;  
+    
 }
 
 @media (hover: hover) {

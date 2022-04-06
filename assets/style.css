@@ -1,5 +1,5 @@
-.h-64rem {
-    height: 64rem;
+.h-90rem {
+    height: 90rem;
 }
 
 .min-w-24rem {
@@ -14,12 +14,7 @@
 	box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-:root {
-    --primary-color: rgb(63, 63, 230);
-    --secondary-color: rgb(0, 24, 130);
-}
-
-/* #gameImg {
+#gameImg {
     display: flex;
     justify-content: center;
     align-items: top;
@@ -27,6 +22,22 @@
 }
 #gameImg img {
     flex-shrink: 0;
-    max-width: 100%;
-    max-height: 100%
-} */
+    min-width: 100%;
+    min-height: 100%
+}
+header {
+    height: max-content;
+    background-image: url("/assets/images/\ game\ controls.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+#navBar ul li:hover, #searchBar button:hover{
+    background-color: #4b68a5;
+}
+
+@media (hover: hover) {
+    img:hover{
+        opacity: 50%;
+    }
+}

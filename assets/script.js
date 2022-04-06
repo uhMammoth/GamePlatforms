@@ -86,7 +86,6 @@ function gameHandler(data) {
   //add and create elements to main game display board
   var img = data.background_image;
   $("#gameImg").empty()
-  // .addClass("<img class='object-cover' src="+ img +">");
   .css('background-image', 'url("' + img + '")');
   $(".gameTitle h1").empty()
   .append(data.name);
@@ -168,9 +167,4 @@ var releaseContainer = function(games) {
         } 
     }
 }
-
-
 releasedGames();
-
-// Jin ends here
-///////////////////////////////////////////////////////////////////////////////////////////////

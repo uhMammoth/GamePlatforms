@@ -31,11 +31,14 @@ header {
     background-size: cover;
     background-position: center;
 }
+<<<<<<< HEAD
 
 #navBar ul li:hover, #searchBar button:hover{
     background-color: #4b68a5;
 }
 
+=======
+>>>>>>> a37f0b7a907bbd96034ad0b6f0ed3705b24c3541
 @media (hover: hover) {
     img:hover{
         opacity: 50%;

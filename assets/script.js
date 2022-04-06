@@ -48,18 +48,13 @@ function dropDown(data){
   
 }
 
-// function embedVideo(data){
-// console.log(data);
-// var videoId = data.items[0].id.videoId;
-// var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
-// $("#trailer").empty()
-// .append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
-// }
-
-//////////////////////////////////
+function embedVideo(data){
+console.log(data);
+var videoId = data.items[0].id.videoId;
+var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
 $("#trailer").empty()
-  .append("<iframe width='503' height='280' src='https://www.youtube.com/embed/SGlpOnIgk1w' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
-//////////////////////////////get rid of above
+.append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
+}
 
 function displayGameData(data) {
   searchedList = data.results;
@@ -69,20 +64,22 @@ function displayGameData(data) {
 function fetchGame(){
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var slug;
+  var youtubeSearch
   if ($(this).attr('gameId')) {
     slug = $(this).attr('gameId');
+    youtubeSearch = $(this).attr('gameName');
   }
   else {
     slug = searchedList[$(this).val()].slug;
+    youtubeSearch = searchedList[$(this).val()].name;
   }
   var gameUrl = "https://api.rawg.io/api/games/"+ slug +"?key=" + apiKey;
   
-  // var youtubeSearch = searchedList[$(this).val()].name;  
-  // var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+ youtubeSearch +"%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
+  var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+ youtubeSearch +"%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
   
-  // fetch(youtubeUrl)
-  //   .then(response => response.json())
-  //   .then(data => embedVideo(data));
+  fetch(youtubeUrl)
+    .then(response => response.json())
+    .then(data => embedVideo(data));
   
   fetch(gameUrl)
       .then(response => response.json())
@@ -98,15 +95,15 @@ function gameHandler(data) {
   $("#gameImg").empty()
   .css({'background-image': 'url("' + img + '")', 'background-size': 'cover', 'background-position-x': 'center', 'background-position-y': 'center'});
 
-  // add img to <img> element to make it easy to resize
-  // $("#gameImg").attr("src", img);
-  // $("#gameImg").addClass("lg:max-w-2xl lg:min-w-34 lg:w-full md:mx-auto")
-
   $(".gameTitle").html(data.name);
   $("#description").html(data.description);
+
   $("#gameInfo").html("<p class='p-1 lg:my-2 lg:p-3 md:p-1 w-fit bg-red-600 text-white rounded-full text-xs lg:text-2xl sm:text-xl'>Metacritic: "+ data.metacritic +"</p>");
+
   $("#gameInfo").append("<p class='p-1 lg:my-2 lg:p-3 md:p-1 w-fit bg-green-600 text-white rounded-full text-xs lg:text-2xl sm:text-xl'>Released Date: "+ data.released +"</p>");
-   $("#listPlatform").empty()
+  
+   $("#listPlatform").empty();
+
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;
    $("#listPlatform")
@@ -121,8 +118,6 @@ function gameHandler(data) {
 }
 
 // Jin starts here //
-
-var releaseContainerEl = document.querySelector("#release-container");
 
 // API for released game list
 var releasedGames = function() {
@@ -150,9 +145,11 @@ var releasedGames = function() {
 var releaseContainer = function(games) {
   
     for (var i = 0; i < games.length; i++) {
+      var releaseContainerEl = document.querySelector("#release-container");
       var gameContainer = document.createElement("div");
       gameContainer.classList = "gameContainer container bg-zinc-800 border-2 p-2 my-3 border-content h-80 text-center";
       gameContainer.setAttribute('gameId', games[i].id);
+      gameContainer.setAttribute('gameName', games[i].name);
 
       var getSpan = document.createElement("span");
 
@@ -182,18 +179,9 @@ var releaseContainer = function(games) {
           getImgSrc.setAttribute("alt", games[i].name);
       } 
     }
-
-    $(".hotReleases").click(function(games) {
-      console.log($(this).val(games[i].id));
-    })
 }
-
-
 
 releasedGames();
 $('#searchBar').on("submit", gameSubmit);
 $(document).on('change', '#listGames', fetchGame);
-
 $(document).on("click",".gameContainer", fetchGame);
-
-// console.log($(this).attr('gameId'));

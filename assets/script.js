@@ -16,7 +16,6 @@ var convertDate = function(num){
 }
 
 var gameSubmit = function(event) {
-    
     $('#listGames').remove();
     event.preventDefault();
 
@@ -30,7 +29,7 @@ var gameSubmit = function(event) {
 
 function getRawgapi(gameName) {
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
-  var apiUrl = "https://api.rawg.io/api/games?key=" + apiKey +"&search="+ gameName.replace(/\s/g, "-") +"&search_exact=true";
+  var apiUrl = "https://api.rawg.io/api/games?key=" + apiKey +"&search="+ gameName.replace(/\s/g, "-") +"&search_exact=true&ordering=-metacritic";
 
   fetch(apiUrl)
     .then(response => response.json())
@@ -86,7 +85,7 @@ function gameHandler(data) {
   //add and create elements to main game display board
   var img = data.background_image;
   $("#gameImg").empty()
-  .css('background-image', 'url("' + img + '")');
+  .css({'background-image': 'url("' + img + '")', 'background-size': 'cover', 'background-position-x': 'center', 'background-position-y': 'center'});
   $(".gameTitle h1").html(data.name);
   $("#description").html(data.description);
   $("#gameInfo").html("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
@@ -95,13 +94,18 @@ function gameHandler(data) {
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;
    $("#listPlatform")
-    .append("<li>"+ listPlatforms +"</li>");
+    .append("<li>"+ listPlatforms +"</li>");    
   }
-  
+  $('#gameDashboard').css('display', 'grid');
 }
 
 
 $('#searchBar').on("submit", gameSubmit);
+
+
+
+
+
 
 // Jin starts here //
 

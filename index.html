@@ -43,33 +43,32 @@
             <!-- search bar -->
             <div class="p-2 rounded flex bg-red-300">
                 <form id="searchBar" class="w-3/4 flex">
-                    <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
-                    <button type="submit" class="btn px-3 py-2.5 bg-black rounded border text-white">Search</button>
+                    <input type="search" id="searchName" class="rounded-lg pl-3 h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
+                    <button type="submit" class="btn px-3 py-2.5 bg-black rounded text-white">Search</button>
                 </form>
             </div>
 
             <!-- game dashboard -->
-            <div class="border-2 p-3 grid grid-cols-2 justify-between ">
-                <div id="gameImg" class="border-2 h-80 w-80 bg-red-300"></div>
-                <div class="gameTitle border-2 basis-4/6">
+            <div id="gameDashboard" class="hidden p-3 grid grid-cols-2 justify-between ">
+                <div id="gameImg" class="h-80 w-80 bg-red-300"></div>
+                <div class="gameTitle basis-4/6">
                     <h1 class="text-5xl p-3 text-white bg-black text-center font-mine">
                         Game Title
                     </h1>
-                    <div class="container border-2 flex justify-center">
+                    <div class="container flex justify-center">
                         <ul id="listPlatform"></ul>
                     </div>
-                    <div id="gameInfo" class="container border-2">
+                    <div id="gameInfo" class="container">
                         
                     </div>
                 </div> 
                 <p id="description" class="text-2xl p-2 leading-normal ">aaaaaaaa</p>       
             </div>
-            <div class="border-2 my-3 bg-red-300">
+            <div class="my-3 bg-red-300">
                 
-            </div>
-            
-            <div class="border-2 p-3 my-2 flex justify-center">
-                <div id="trailer" class="box-border h-80 w-3/4 p-4 border-4">
+            </div>            
+            <div class="p-3 my-2 flex justify-center">
+                <div id="trailer" class="h-80 w-3/4 p-4">
                     
                 </div>  
                 

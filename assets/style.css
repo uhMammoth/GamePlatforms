@@ -10,44 +10,20 @@
     font-family: 'Minecraft', sans-serif;
 }
 * {
-	/* margin: 0 auto; */
 	box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-:root {
-    --primary-color: rgb(63, 63, 230);
-    --secondary-color: rgb(0, 24, 130);
+header {
+    height: max-content;
+    background-image: url("/assets/images/\ game\ controls.jpeg");
+    background-size: cover;
+    background-position: center;
 }
-
-/* #gameImg {
-    display: flex;
-    justify-content: center;
-    align-items: top;
-    overflow: hidden
+#navBar ul li:hover, #searchBar button:hover{
+    background-color: #4b68a5;
 }
-#gameImg img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-} */
-/* .bg-img {
-    height: fill;
-    width: 100%;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    background-image: url("./images/bg-img.jpeg");
-    background-size: contain;
-    position: absolute;
-    opacity: 0.5;
-    background-position: center;  
-    
-} */
-/* 
 @media (hover: hover) {
     img:hover{
         opacity: 50%;
     }
 }
-    max-width: 100%;
-    max-height: 100%
-} */

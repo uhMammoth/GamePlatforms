@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="grid place-content-center lg:h-60 md:h-52 sm:h-44">
-            <h1 class="mx-auto mt-3 md:py-3 text-center p-1 sm:p-3 lg:p-5 lg:pb-8 lg:px-16 bg-black w-5/6 lg:w-full rounded-full">
+            <h1 class="mx-auto mt-3 md:py-3 text-center p-1 sm:p-3 lg:p-5 lg:pb-8 lg:px-16 bg-black w-5/6 lg:w-full rounded">
                 <a href="index.html" class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-white font-mine">
                   Game Database
                 </a>
@@ -34,56 +34,35 @@
         </div> 
     </header>
 
-    <main class="bg-slate-100 flex flex-row justify-center w-full">
+    <main class="bg-slate-100 flex flex-row justify-center w-full h-full">
         <!-- new release column -->
         <section class="p-2 hidden lg:flex">
             <div id="release-container">
-                <h1 class="text-4xl p-5 text-white bg-black text-center font-mine">New Hot Releases</h1>
+                <h1 class="text-4xl p-5 text-white bg-black text-center font-mine rounded">New Hot Releases</h1>
             </div>
         </section>
         
         <!-- searched game dashboard -->
-        <section class="w-full lg:p-2 md:p-0 sm:p-0">
+        <section class="bg-gray-400 basis-full lg:p-2 md:p-0 sm:p-0">
             <!-- search bar -->
-            <div class="p-2 rounded flex bg-red-300 justify-center">
-                <form id="searchBar" class="w-9/10 lg:w-3/4 flex">
+            <div class="p-2 flex justify-center">
+                <form id="searchBar" class="w-5/6 lg:w-3/4 flex">
                     <input type="search" id="searchName" class="lg:text-xl text-base rounded-lg pl-3 lg:h-14 sm:h-10 form-control relative flex-auto w-2/4"  placeholder="Search Here">
                     <button type="submit" class="btn px-3 lg:py-2.5 bg-black rounded text-white lg:text-xl text-base">Search</button>
                 </form>
             </div>
 
             <!-- game dashboard -->
-            <div id="gameDashboard" class="hidden lg:p-3 md:p-0 flex flex-wrap-reverse grid-cols-2 justify-center">
-                
-                <div class="container my-2 lg:p-2 xl:basis-1/2 md:basis-full">
-                    <img id="gameImg">
+            <div id="gameDashboard" class="hidden mx-3 flex flex-wrap justify-center">
+                <h1 class="gameTitle basis-full lg:text-5xl md:text-4xl sm:text-3xl p-2 lg:p-5 lg:pt-1 text-white bg-black text-center font-mine h-min rounded">Game Title</h1>
+                <div id="gameImg" class="w-2/4 h-80"></div>
+                <div class="w-2/4">
+                    <ul id="listPlatform" class="w-fit"></ul>                    
                 </div>
-                
-                <div class="container lg:p-2 xl:basis-1/2 md:basis-full">
-                    <div class="gameTitle lg:max-w-2xl min-w-34-lg">
-                        <h1 class="lg:text-5xl md:text-4xl sm:text-3xl p-2 lg:p-5 lg:pt-1 text-white bg-black text-center font-mine">
-                            Game Title
-                        </h1>
-                        <div class="container flex justify-center p-0 lg:p-3 bg-sky-100 sm:p-0">
-                            <ul id="listPlatform" class="flex flex-wrap justify-center"></ul>
-                        </div>
-                        <div id="gameInfo" class="container flex flex-wrap justify-evenly">                        
-                        </div>
-                    </div> 
-                </div>   
-                
+                <div id="gameInfo" class="container flex flex-nowrap justify-around"></div>                
+                <p id="description" class="lg:text-2xl sm:text-xl p-2 lg:p-10 my-3 leading-normal col-span-2 bg-gray-500 rounded"></p>
+                <div id="trailer" class="h-80 w-3/4 p-4"></div>
             </div>
-            <p id="description" class="lg:text-2xl sm:text-xl p-2 lg:p-10 my-3 leading-normal col-span-2"></p>
-            <div class="my-3 bg-red-300">
-                
-            </div>            
-            <div class="p-3 my-2 flex justify-center">
-                <div id="trailer" class="h-80 w-3/4 p-4">
-                    
-                </div>  
-                
-            </div>
-            
         </section>
     </main>
 
@@ -91,7 +70,7 @@
         <div class="grid grid-rows-3 grid-flow-col gap-2 text-center justify-center">
             <!-- "About" section -->
             <section id="about" class="container w-5/5">
-                <h2 class="p-3 text-xs lg:text-xl sm:text-base text-white bg-black text-center">About</h2>
+                <h2 class="p-3 text-xs lg:text-xl sm:text-base text-white text-center">About</h2>
                 <p class="text-xs lg:text-lg sm:text-sm">
                     Our application is for a customer who wants to find out what gaming platforms 
                     is a certain video game available on which including reviews and images and video.
@@ -99,13 +78,13 @@
             </section>
             <!-- "APILINKS" section -->
              <section id="APIlinks" class="container w-5/5">
-                <h2 class="p-3 text-xs lg:text-xl sm:text-base text-white bg-black text-center">APIs</h2>
+                <h2 class="p-3 text-xs lg:text-xl sm:text-base text-white text-center">APIs</h2>
                 <p><a href="https://rawg.io/apidocs" class="text-xs sm:text-base">RAWG</a></p>
                 <p><a href="https://developers.google.com/youtube/v3" class="text-xs sm:text-base">Youtube DATA</a></p>
             </section>
             <!-- "Contact" section -->
             <section id="contact" class="container w-5/5">
-                <h2 class="p-3 text-xs lg:text-xl sm:text-base text-white bg-black text-center">Contact the Developers</h2>
+                <h2 class="p-3 text-xs lg:text-xl sm:text-base text-white text-center">Contact the Developers</h2>
                 <p class="text-xs lg:text-lg sm:text-sm">
                     Hector Castaneda, Seungjin Lee, Kyle Petty and Stephanie Rodriguez
                 </p>

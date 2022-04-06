@@ -27,15 +27,10 @@ header {
     background-size: cover;
     background-position: center;
 }
-#navBar ul li:hover, #searchBar button:hover{
+#navBar ul li:hover, #searchBar button:hover, .gameContainer:hover{
     background-color: #4b68a5;
+    cursor: pointer;
 }
-@media (hover: hover) {
-    img:hover{
-        opacity: 50%;
-    }
-}
-
 @media (min-width: 1024px) {
     .min-w-34-lg {
         min-width: 34rem;

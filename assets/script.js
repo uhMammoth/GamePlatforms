@@ -38,7 +38,7 @@ function getRawgapi(gameName) {
 
 function dropDown(data){
     $("#searchBar")
-  .append("<select name='game' id='listGames' class='w-1/4 p-3'></select>");
+  .append("<select name='game' id='listGames' class='w-1/4 text-base lg:text-xl lg:w-1/4 lg:p-3 sm:p-1'></select>");
   $("#listGames")
   .append("<option>Select Game</option>");
   for(let i = 0; i < data.results.length; i++){
@@ -84,19 +84,30 @@ function gameHandler(data) {
   //get img title metascore platforms description
   //add and create elements to main game display board
   var img = data.background_image;
-  $("#gameImg").empty()
-  .css({'background-image': 'url("' + img + '")', 'background-size': 'cover', 'background-position-x': 'center', 'background-position-y': 'center'});
+
+  // $("#gameImg").empty()
+  // .css({'background-image': 'url("' + img + '")', 'background-size': 'cover', 'background-position-x': 'center', 'background-position-y': 'center'});
+
+  // add img to <img> element to make it easy to resize
+  $("#gameImg").attr("src", img);
+  $("#gameImg").addClass("lg:max-w-2xl lg:min-w-34 lg:w-full md:mx-auto")
+
   $(".gameTitle h1").html(data.name);
   $("#description").html(data.description);
-  $("#gameInfo").html("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
-  $("#gameInfo").append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
+  $("#gameInfo").html("<p class='p-1 lg:my-2 lg:p-3 md:p-1 w-fit bg-red-600 text-white rounded-full text-xs lg:text-2xl sm:text-xl'>Metacritic: "+ data.metacritic +"</p>");
+  $("#gameInfo").append("<p class='p-1 lg:my-2 lg:p-3 md:p-1 w-fit bg-green-600 text-white rounded-full text-xs lg:text-2xl sm:text-xl'>Released Date: "+ data.released +"</p>");
    $("#listPlatform").empty()
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;
    $("#listPlatform")
-    .append("<li>"+ listPlatforms +"</li>");    
+    .append("<li>"+ listPlatforms +"</li>");
+  
+  // add class for <li> element for platforms
+   $("#listPlatform").find("li").addClass("font-black text-zinc-900 rounded-2xl border-4 border-cyan-500 m-4 p-3 text-xs lg:text-2xl sm:text-xl")    
   }
-  $('#gameDashboard').css('display', 'grid');
+  
+  // not able to control media query with display-grid
+  $('#gameDashboard').css('display', 'flex');
 }
 
 

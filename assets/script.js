@@ -22,11 +22,7 @@ var gameSubmit = function(event) {
   var gameName = $('#searchName').val();
   $('#searchName').val('');
   if (gameName) {
-<<<<<<< HEAD
-    getRawgapi(gameName)
-=======
     getRawgapi(gameName);
->>>>>>> 7a933a214b8c97f30c828de08ab006a592308439
   };
   
 }

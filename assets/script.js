@@ -35,16 +35,16 @@ function dropDown(data){
   
 }
 
-function embedVideo(data){
-console.log(data);
+// function embedVideo(data){
+// console.log(data);
 
-var videoId = data.items[0].id.videoId;
-var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
+// var videoId = data.items[0].id.videoId;
+// var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
 
-$("#trailer").empty()
-.append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
+// $("#trailer").empty()
+// .append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
 
-}
+// }
 
 function displayGameData(data) {
   searchedList = data.results;
@@ -55,12 +55,12 @@ $(document).on('change', '#listGames', function(){
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var gameUrl = "https://api.rawg.io/api/games/"+ searchedList[$(this).val()].slug +"?key=" + apiKey;
   
-  var youtubeSearch = searchedList[$(this).val()].name;  
-  var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+ youtubeSearch +"%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
+  // var youtubeSearch = searchedList[$(this).val()].name;  
+  // var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+ youtubeSearch +"%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
   
-  fetch(youtubeUrl)
-    .then(response => response.json())
-    .then(data => embedVideo(data));
+  // fetch(youtubeUrl)
+  //   .then(response => response.json())
+  //   .then(data => embedVideo(data));
   
   fetch(gameUrl)
       .then(response => response.json())

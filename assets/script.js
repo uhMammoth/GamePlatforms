@@ -133,16 +133,16 @@ var releasedGames = function() {
       })
     }        
   })
-  console.log(data);
+ 
 }
 
 // Set release games container
 var releaseContainer = function(games) {
-
+  console.log(games);
     for (var i = 0; i < games.length; i++) {
     
         var getContainer = document.createElement("div");
-        getContainer.classList = "container bg-zinc-800 border-2 p-2 my-3 border-content h-80 text-center";
+        getContainer.classList = "value='"+ games.i +"' hotReleases container bg-zinc-800 border-2 p-2 my-3 border-content h-80 text-center";
         getContainer.setAttribute("data-release-container", i);
         var getSpan = document.createElement("span");
         getSpan.classList = "text-white text-xl";
@@ -167,5 +167,9 @@ var releaseContainer = function(games) {
             getImgSrc.setAttribute("alt", games[i].name);
         } 
     }
+
+    $(".hotReleases").click(function(games) {
+      console.log($(this).val(games[i].id));
+    })
 }
 releasedGames();

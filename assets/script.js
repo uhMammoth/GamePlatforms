@@ -87,14 +87,10 @@ function gameHandler(data) {
   var img = data.background_image;
   $("#gameImg").empty()
   .css('background-image', 'url("' + img + '")');
-  $(".gameTitle h1").empty()
-  .append(data.name);
-  $("#description").empty()
-  .append(data.description);
-  $("#gameInfo").empty()
-  .append("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
-  $("#gameInfo")
-  .append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
+  $(".gameTitle h1").html(data.name);
+  $("#description").html(data.description);
+  $("#gameInfo").html("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
+  $("#gameInfo").append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
    $("#listPlatform").empty()
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;
@@ -121,7 +117,7 @@ var releasedGames = function() {
 
   // set dates range = 1st of this month to today
   var apiUrl = 
-  "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic";
+  "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic&page_size=5";
 
   fetch(apiUrl).then(function(response) {
 

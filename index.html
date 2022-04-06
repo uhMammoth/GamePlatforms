@@ -10,36 +10,48 @@
     <link href="http://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">                    
 </head>
 <body>
-    <header class="text-center">
-        <h1 class="text-5xl p-6 text-white bg-black font-mine">Game Platforms</h1>
+    <header class="grid place-content-center">
+        <h1 class="border text-5xl mt-3 p-5 pb-8 px-16 text-white bg-black w-full rounded-full font-mine">Game Database</h1>
+        
+        <div class="hero" alt="different gaming controllers">
+            <nav id="navBar" class="">
+                <ul class="grid grid-cols-3 place-content-center w-full">
+                    <li class="bg-black border rounded-full m-2">
+                        <a class="text-center block  py-2 px-4 text-white text-xl" href="#about">About</a>
+                    </li>
+                    <li class="bg-black border rounded-full m-2">
+                        <a class="text-center block py-2 px-4 text-white text-xl" href="#APIlinks">APIs</a>
+                    </li>
+                    <li class="bg-black border rounded-full m-2">
+                        <a class="text-center block py-2 px-4 text-white text-xl" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="container-xl flex flex-row mx-auto border-2 justify-center">
+    <main class="flex flex-row justify-center w-full">
         <!-- new release column -->
-        <section class="container border-2 box-border basis-1/4 mr-1 max-w-sm min-w-24rem overflow-y-scroll h-64rem">
-            <div id="release-container" class="container">
+        <section class="hidden lg:flex">
+            <div id="release-container">
                 <h1 class="text-3xl p-3 text-white bg-black text-center font-mine">New Hot Releases</h1>
             </div>
         </section>
         
         <!-- searched game dashboard -->
-        <section class="container p-2 m-2 mt-0 border-2">
+        <section class="w-full p-2">
             <!-- search bar -->
-            <div class="container border-content border-2 basis-3/4 p-2 mx-auto bg-zinc-300">
-                <div class="flex justify-center">
-                <form id="searchBar" class="w-full whitespace-nowrap">
-                    <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
-                    <button type="submit" class="btn px-3 py-2.5 bg-black rounded-full text-white">Search</button>
-                </form>   
-                </div>
+            <div class="p-2 rounded flex bg-red-300">
+                <form id="searchBar" class="w-3/4 flex">
+                    <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
+                    <button type="submit" class="btn px-3 py-2.5 bg-black rounded border text-white">Search</button>
+                </form>
             </div>
 
             <!-- game dashboard -->
-            <div class="container border-2 p-3 flex justify-between">
-                <div id="gameImg" class="container border-2 h-80 w-2/5">
-                    
-                </div>
-                <div class="gameTitle container border-2 w-3/4">
+            <div class="border-2 p-3 grid grid-cols-2 justify-between ">
+                <div id="gameImg" class="border-2 h-80 w-80 bg-red-300"></div>
+                <div class="gameTitle border-2 basis-4/6">
                     <h1 class="text-5xl p-3 text-white bg-black text-center font-mine">
                         Game Title
                     </h1>
@@ -49,18 +61,15 @@
                     <div id="gameInfo" class="container border-2">
                         
                     </div>
-                </div>        
+                </div> 
+                <p id="description" class="text-2xl p-2 leading-normal ">aaaaaaaa</p>       
             </div>
-            <div class="container border-2 my-3">
-                <p id="description" class="text-2xl p-2 leading-normal">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi 
-                    repellat eum ipsam quod debitis distinctio quasi dignissimos voluptate aliquam autem, 
-                    delectus nisi totam a inventore laudantium id ex molestias incidunt?
-                </p>
+            <div class="border-2 my-3 bg-red-300">
+                
             </div>
             
-            <div class="container border-2 p-3 my-2 flex justify-center">
-                <div id="trailer" class="container box-border h-80 w-3/4 p-4 border-4">
+            <div class="border-2 p-3 my-2 flex justify-center">
+                <div id="trailer" class="box-border h-80 w-3/4 p-4 border-4">
                     
                 </div>  
                 
@@ -70,7 +79,29 @@
     </main>
 
     <footer class="text-center p-6 text-white bg-black font-mine">
-        <p>© 2022 GitHub, Inc. | Terms | Privacy | Security | Status | Docs | Contact | GitHub | Pricing | API | Training | Blog | About</p>
+        <div class="grid grid-rows-3 grid-flow-col gap-2 text-center">
+            <!-- "About" section -->
+            <section id="about" class="container w-5/5">
+                <h2 class="p-3 text-xl text-white bg-black text-center">About</h2>
+                <p>
+                    Our application is for a customer who wants to find out what gaming platforms 
+                    is a certain video game available on which including reviews and images and video.
+                </p>
+            </section>
+            <!-- "APILINKS" section -->
+             <section id="APIlinks" class="container w-5/5">
+                <h2 class="p-3 text-xl text-white bg-black text-center">APIs</h2>
+                <p><a href="https://rawg.io/apidocs" class="">RAWG</a></p>
+                <p><a href="https://developers.google.com/youtube/v3">Youtube DATA</a></p>
+            </section>
+            <!-- "Contact" section -->
+            <section id="contact" class="container w-5/5">
+                <h2 class="p-3 text-xl text-white bg-black text-center">Contact the Developers</h2>
+                <p>
+                    Hector Castaneda, Seungjin Lee, Kyle Petty and Stephanie Rodriguez
+                </p>
+            </section>
+        </div>
     
 
     </footer>

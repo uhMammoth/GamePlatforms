@@ -10,34 +10,18 @@
     font-family: 'Minecraft', sans-serif;
 }
 * {
-	margin: 0 auto;
 	box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-/* #gameImg {
-    display: flex;
-    justify-content: center;
-    align-items: top;
-    overflow: hidden
-}
-#gameImg img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-} */
-
 header {
     height: max-content;
     background-image: url("/assets/images/\ game\ controls.jpeg");
     background-size: cover;
     background-position: center;
 }
-
 #navBar ul li:hover, #searchBar button:hover{
     background-color: #4b68a5;
 }
-
 @media (hover: hover) {
     img:hover{
         opacity: 50%;

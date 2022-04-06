@@ -25,14 +25,15 @@
     min-width: 100%;
     min-height: 100%
 }
-.hero {
-    height: 300px;
-    width: 100%;
-    margin-bottom: 5px;
-    margin-top: 5px;
+header {
+    height: max-content;
     background-image: url("/assets/images/\ game\ controls.jpeg");
     background-size: cover;
     background-position: center;
+}
+
+#navBar ul li:hover, #searchBar button:hover{
+    background-color: #4b68a5;
 }
 
 @media (hover: hover) {

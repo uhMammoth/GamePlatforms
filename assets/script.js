@@ -85,16 +85,11 @@ function gameHandler(data) {
   //get img title metascore platforms description
   //add and create elements to main game display board
   var img = data.background_image;
-  $("#gameImg").empty()
-  .append("<img class='object-cover' src="+ img +">");
-  $(".gameTitle h1").empty()
-  .append(data.name);
-  $("#description").empty()
-  .append(data.description);
-  $("#gameInfo").empty()
-  .append("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
-  $("#gameInfo")
-  .append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
+  $("#gameImg").html("<img class='object-cover' src="+ img +">");
+  $(".gameTitle h1").html(data.name);
+  $("#description").html(data.description);
+  $("#gameInfo").html("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
+  $("#gameInfo").append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
    $("#listPlatform").empty()
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;

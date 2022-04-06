@@ -34,7 +34,6 @@
     background-size: cover;
     background-position: center;
 }
-
 @media (hover: hover) {
     img:hover{
         opacity: 50%;

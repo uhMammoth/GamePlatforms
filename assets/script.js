@@ -1,6 +1,20 @@
 // Get Game info
 var searchedList;
 
+var convertDate = function(num){
+  var myDate = new Date(num);
+  var monthDayYear = myDate.toLocaleString().split(',')[0];
+  var dateArr = monthDayYear.split('/');
+  if (dateArr[0].length === 1) {
+    dateArr[0] = "0"+ dateArr[0];
+  }
+  if (dateArr[1].length === 1) {
+    dateArr[1] = "0"+ dateArr[1];
+  }
+  var date = dateArr[2] +"-"+ dateArr[0] +"-"+ dateArr[1];
+  return date;
+}
+
 var gameSubmit = function(event) {
     
     $('#listGames').remove();
@@ -94,36 +108,32 @@ function gameHandler(data) {
 
 $('#searchBar').on("submit", gameSubmit);
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 // Jin starts here //
-
-// Released games
-
-// Set var for release date
-// var thisMonth = moment().format("YYYY-MM-01");
-// var today = moment().format("YYYY-MM-DD")
-
 
 var releaseContainerEl = document.querySelector("#release-container");
 
 // API for released game list
 var releasedGames = function() {
+  var date = new Date();
+  var endDate = convertDate(date.getTime());
+  var startDate = convertDate(date.getTime() - 2592000*1000);
+  
+  console.log(startDate, endDate); 
 
-    // set dates range = 1st of this month to today
-    var apiUrl = 
-    "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&ordering=-released";
+  // set dates range = 1st of this month to today
+  var apiUrl = 
+  "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic";
 
-    fetch(apiUrl).then(function(response) {
+  fetch(apiUrl).then(function(response) {
 
-      if(response.ok) {
-        response.json().then(function(data) {
-
-        releaseContainer(data.results);        
-        
-        })
-      }        
-    })
+    if(response.ok) {
+      response.json().then(function(data) {
+        console.log(data);
+      releaseContainer(data.results);        
+      
+      })
+    }        
+  })
 }
 
 // Set release games container

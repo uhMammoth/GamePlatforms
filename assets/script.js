@@ -1,16 +1,16 @@
 // Get Game info
-var testing = function(){
-  var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=halo%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
+// var testing = function(){
+//   var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=halo%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
   
-  fetch(aUrl)
-    .then(response => response.json())
-    .then(data => something(data));
-}
-var something = function(data){
-  console.log(data);
-}
+//   fetch(aUrl)
+//     .then(response => response.json())
+//     .then(data => something(data));
+// }
+// var something = function(data){
+//   console.log(data);
+// }
 
-testing();
+// testing();
 
 var searchedList;
 
@@ -49,7 +49,14 @@ function dropDown(data){
 }
 
 function embedVideo(data){
-  
+console.log(data);
+// for(let i = 0; i < data.items.length;) {
+var videoId = data.items[0].id.videoId;
+var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
+
+$("#trailer").empty()
+.append("<iframe width='560' height='315' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
+  // }
 }
 
 function displayGameData(data) {
@@ -64,10 +71,11 @@ $(document).on('change', '#listGames', function(){
   
   var youtubeSearch = searchedList[$(this).val()].name;  
   var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+ youtubeSearch +"game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
+  
   fetch(youtubeUrl)
     .then(response => response.json())
     .then(data => embedVideo(data));
-
+  
   fetch(gameUrl)
       .then(response => response.json())
       .then(data => gameHandler(data));

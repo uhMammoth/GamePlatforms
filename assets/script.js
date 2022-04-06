@@ -133,6 +133,7 @@ var releasedGames = function() {
       })
     }        
   })
+  console.log(data);
 }
 
 // Set release games container

@@ -121,7 +121,7 @@ var releasedGames = function() {
 
   // set dates range = 1st of this month to today
   var apiUrl = 
-  "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic";
+  "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic&page_size=5";
 
   fetch(apiUrl).then(function(response) {
 

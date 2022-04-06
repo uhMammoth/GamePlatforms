@@ -11,103 +11,63 @@
 </head>
 <body>
     <header class="text-center">
-        <h1 class="text-5xl p-6 bg-black">
-            <a href="./index.html" class="font-mine text-white">
-                Game Platforms
-            </a>
-        </h1>
-        <nav class="bg-black">
-            <ul class="flex justify-between">
-                <li class="flex-1">
-                    <a class="text-center font-mine block border rounded py-2 px-4 text-white text-xl" href="#about">About</a>
-                </li>
-                <li class="flex-1">
-                    <a class="text-center font-mine block border rounded py-2 px-4 text-white text-xl" href="#APIlinks">APIs</a>
-                </li>
-                <li class="flex-1">
-                    <a class="text-center font-mine block border rounded py-2 px-4 text-white text-xl" href="#contact">Contact</a>
-                </li>
-            </ul>
-        </nav>
+        <h1 class="text-5xl p-6 text-white bg-black font-mine">Game Platforms</h1>
     </header>
 
-    <section id="hero" class="flex items-end bg-img my-0 relative h-full w-full">
-    </section>
-        <div class="container opacity-90 border-content border-2 w-full p-2 mx-auto">
-            <div class="flex justify-center">
-              <form id="searchBar" class="basis-3/4 whitespace-nowrap">
-                <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
-                <button type="submit" class="btn px-3 py-2.5 bg-black rounded-lg text-white">Search</button>      
-              </form>   
+    <main class="container-xl flex flex-row mx-auto border-2 justify-center">
+        <!-- new release column -->
+        <section class="container border-2 box-border basis-1/4 mr-1 max-w-sm min-w-24rem h-64rem">
+            <div id="release-container" class="container">
+                <h1 class="text-3xl p-3 text-white bg-black text-center font-mine">New Hot Releases</h1>
             </div>
-        </div>
-    
-    
-    
-    <div class="container-xl flex flex-row mx-auto border-2 justify-center">
-      <div class="container border-2 box-border basis-1/4 mr-1 max-w-sm min-w-24rem overflow-y-scroll h-90rem">
-          <div id="release-container" class="container">
-              <h1 class="text-3xl p-3 text-white bg-black text-center font-mine">
-                  New Releases
-                </h1>         
-      </div>
-      </div>
+        </section>
         
-    <div class="container p-2 m-2 mt-0 border-2 mr-auto">
-        <div class="container border-2 p-3 flex justify-between">
-          <div id="gameImg" class="container border-2 h-80 w-2/5">
-            
-          </div>
-          <div class="container border-2 w-3/4">
-            <h1 class="text-5xl p-3 text-white bg-black text-center font-mine">
-                Game Title
-            </h1>
-            <div class="container border-2 flex justify-center">
-                <ul id="listPlatform"></ul>
+        <!-- searched game dashboard -->
+        <section class="container p-2 m-2 mt-0 border-2">
+            <!-- search bar -->
+            <div class="container border-content border-2 basis-3/4 p-2 mx-auto bg-zinc-300">
+                <div class="flex justify-center">
+                <form id="searchBar" class="w-full whitespace-nowrap">
+                    <input type="search" id="searchName" class="rounded-lg pl-3 border-gray-500 border-2 border-content h-12 form-control relative flex-auto w-2/4"  placeholder="Search Here">
+                    <button type="submit" class="btn px-3 py-2.5 bg-black rounded-full text-white">Search</button>
+                </form>   
+                </div>
             </div>
-            <div class="container border-2">
-                <p id="metaScore"class="my-2 p-2 w-1/4 bg-red-600 text-white rounded-full text-xl">Metacritic score</p> 
-                <p id="release" class="my-2 p-2 w-1/4 bg-green-500 text-white rounded-full text-xl">Release date</p>
-            </div>
-          </div>        
-        </div>
-        <div class="container border-2 my-3">
-            <p id="description" class="text-2xl p-2 leading-normal">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi 
-                repellat eum ipsam quod debitis distinctio quasi dignissimos voluptate aliquam autem, 
-                delectus nisi totam a inventore laudantium id ex molestias incidunt?
-            </p>
-        </div>
-        
-        <div class="container border-2 p-3 my-2 flex justify-center">
-            <div id="trailer" class="container box-border h-80 w-3/4 p-4 border-4">Trailer</div>  
-            
-        </div>
-        <div class="container border-2 flex justify-around p-3">
-            <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
-            <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">image</div>
-            <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">screenshot</div>
-            <div class="container m-2 box-border h-40 w-1/4 p-4 border-4">video</div>
-        </div>
-      </div>
-      </div>
-    </div>
 
-<!-- <footer class="text-center">
-    <h1 class="text-5xl p-6 text-white bg-black font-mine">Footer</h1>
-    
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About -->
+            <!-- game dashboard -->
+            <div class="container border-2 p-3 flex justify-between">
+                <div id="gameImg" class="container border-2 h-80 w-2/5">
+                    
+                </div>
+                <div class="container border-2 w-3/4">
+                    <h1 class="text-5xl p-3 text-white bg-black text-center font-mine">
+                        Game Title
+                    </h1>
+                    <div class="container border-2 flex justify-center">
+                        <ul id="listPlatform"></ul>
+                    </div>
+                    <div id="gameInfo" class="container border-2">
+                        
+                    </div>
+                </div>        
+            </div>
+            <div class="container border-2 my-3">
+                <p id="description" class="text-2xl p-2 leading-normal">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi 
+                    repellat eum ipsam quod debitis distinctio quasi dignissimos voluptate aliquam autem, 
+                    delectus nisi totam a inventore laudantium id ex molestias incidunt?
+                </p>
+            </div>
+            
+            <div class="container border-2 p-3 my-2 flex justify-center">
+                <div id="trailer" class="container box-border h-80 w-3/4 p-4 border-4">
+                    
+                </div>  
+                
+            </div>
+            
+        </section>
+    </main>
 
     <footer class="text-center p-6 text-white bg-black font-mine">
         <p>© 2022 GitHub, Inc. | Terms | Privacy | Security | Status | Docs | Contact | GitHub | Pricing | API | Training | Blog | About</p>

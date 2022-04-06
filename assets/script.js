@@ -1,18 +1,19 @@
 // Get Game info
-// var testing = function(){
-//   var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=halo%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
-  
-//   fetch(aUrl)
-//     .then(response => response.json())
-//     .then(data => something(data));
-// }
-// var something = function(data){
-//   console.log(data);
-// }
-
-// testing();
-
 var searchedList;
+
+var convertDate = function(num){
+  var myDate = new Date(num);
+  var monthDayYear = myDate.toLocaleString().split(',')[0];
+  var dateArr = monthDayYear.split('/');
+  if (dateArr[0].length === 1) {
+    dateArr[0] = "0"+ dateArr[0];
+  }
+  if (dateArr[1].length === 1) {
+    dateArr[1] = "0"+ dateArr[1];
+  }
+  var date = dateArr[2] +"-"+ dateArr[0] +"-"+ dateArr[1];
+  return date;
+}
 
 var gameSubmit = function(event) {
     
@@ -48,20 +49,19 @@ function dropDown(data){
   
 }
 
-function embedVideo(data){
-console.log(data);
-// for(let i = 0; i < data.items.length;) {
-var videoId = data.items[0].id.videoId;
-var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
+// function embedVideo(data){
+// console.log(data);
 
-$("#trailer").empty()
-.append("<iframe width='560' height='315' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
-  // }
-}
+// var videoId = data.items[0].id.videoId;
+// var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
+
+// $("#trailer").empty()
+// .append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
+
+// }
 
 function displayGameData(data) {
   searchedList = data.results;
-  // var img = data.background_image;
   dropDown(data);
 }
 
@@ -69,12 +69,12 @@ $(document).on('change', '#listGames', function(){
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var gameUrl = "https://api.rawg.io/api/games/"+ searchedList[$(this).val()].slug +"?key=" + apiKey;
   
-  var youtubeSearch = searchedList[$(this).val()].name;  
-  var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+ youtubeSearch +"game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
+  // var youtubeSearch = searchedList[$(this).val()].name;  
+  // var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+ youtubeSearch +"%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
   
-  fetch(youtubeUrl)
-    .then(response => response.json())
-    .then(data => embedVideo(data));
+  // fetch(youtubeUrl)
+  //   .then(response => response.json())
+  //   .then(data => embedVideo(data));
   
   fetch(gameUrl)
       .then(response => response.json())
@@ -86,15 +86,15 @@ function gameHandler(data) {
   //add and create elements to main game display board
   var img = data.background_image;
   $("#gameImg").empty()
-  .append("<img src="+ img +">");
+  .append("<img class='object-cover' src="+ img +">");
   $(".gameTitle h1").empty()
   .append(data.name);
   $("#description").empty()
   .append(data.description);
-  $("#metaScore").empty()
-  .append(data.metacritic);
-  $("#release").empty()
-  .append(data.released);
+  $("#gameInfo").empty()
+  .append("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
+  $("#gameInfo")
+  .append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
    $("#listPlatform").empty()
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;
@@ -107,36 +107,32 @@ function gameHandler(data) {
 
 $('#searchBar').on("submit", gameSubmit);
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 // Jin starts here //
-
-// Released games
-
-// Set var for release date
-// var thisMonth = moment().format("YYYY-MM-01");
-// var today = moment().format("YYYY-MM-DD")
-
 
 var releaseContainerEl = document.querySelector("#release-container");
 
 // API for released game list
 var releasedGames = function() {
+  var date = new Date();
+  var endDate = convertDate(date.getTime());
+  var startDate = convertDate(date.getTime() - 2592000*1000);
+  
+  console.log(startDate, endDate); 
 
-    // set dates range = 1st of this month to today
-    var apiUrl = 
-    "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&ordering=-released";
+  // set dates range = 1st of this month to today
+  var apiUrl = 
+  "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic&page_size=5";
 
-    fetch(apiUrl).then(function(response) {
+  fetch(apiUrl).then(function(response) {
 
-      if(response.ok) {
-        response.json().then(function(data) {
-
-        releaseContainer(data.results);        
-        
-        })
-      }        
-    })
+    if(response.ok) {
+      response.json().then(function(data) {
+        console.log(data);
+      releaseContainer(data.results);        
+      
+      })
+    }        
+  })
 }
 
 // Set release games container

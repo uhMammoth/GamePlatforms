@@ -1,17 +1,4 @@
 // Get Game info
-// var testing = function(){
-//   var aUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=halo%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY";
-  
-//   fetch(aUrl)
-//     .then(response => response.json())
-//     .then(data => something(data));
-// }
-// var something = function(data){
-//   console.log(data);
-// }
-
-// testing();
-
 var searchedList;
 
 var gameSubmit = function(event) {
@@ -50,18 +37,17 @@ function dropDown(data){
 
 function embedVideo(data){
 console.log(data);
-// for(let i = 0; i < data.items.length;) {
+
 var videoId = data.items[0].id.videoId;
 var trailerVi = "https://www.youtube.com/embed/"+ videoId ;
 
 $("#trailer").empty()
-.append("<iframe width='560' height='315' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
-  // }
+.append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
+
 }
 
 function displayGameData(data) {
   searchedList = data.results;
-  // var img = data.background_image;
   dropDown(data);
 }
 
@@ -70,7 +56,7 @@ $(document).on('change', '#listGames', function(){
   var gameUrl = "https://api.rawg.io/api/games/"+ searchedList[$(this).val()].slug +"?key=" + apiKey;
   
   var youtubeSearch = searchedList[$(this).val()].name;  
-  var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+ youtubeSearch +"game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
+  var youtubeUrl = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+ youtubeSearch +"%20game%20trailer&topicId=%2Fm%2F0bzvm2&key=AIzaSyAEGvruHG5yV_9vHTGqtP00RPTMAkmCZEY"
   
   fetch(youtubeUrl)
     .then(response => response.json())
@@ -86,15 +72,15 @@ function gameHandler(data) {
   //add and create elements to main game display board
   var img = data.background_image;
   $("#gameImg").empty()
-  .append("<img src="+ img +">");
+  .append("<img class='object-cover' src="+ img +">");
   $(".gameTitle h1").empty()
   .append(data.name);
   $("#description").empty()
   .append(data.description);
-  $("#metaScore").empty()
-  .append(data.metacritic);
-  $("#release").empty()
-  .append(data.released);
+  $("#gameInfo").empty()
+  .append("<p class='my-2 p-2 w-fit bg-red-600 text-white rounded-full text-xl'>Metacritic:"+ data.metacritic +"</p>");
+  $("#gameInfo")
+  .append("<p class='my-2 p-2 w-fit bg-green-600 text-white rounded-full text-xl'>Released Date:"+ data.released +"</p>");
    $("#listPlatform").empty()
   for(let i = 0; i < data.parent_platforms.length; i++) {
     var listPlatforms = data.parent_platforms[i].platform.name;

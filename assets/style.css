@@ -1,9 +1,28 @@
+@font-face {
+    font-family: 'Minecraft';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Minecraft'), url('https://fonts.cdnfonts.com/s/36662/MinecraftTen-VGORe.woff') format('woff');
+}
+
+h1, #navBar ul li a {
+    font-family: 'Minecraft', Arial, Helvetica, sans-serif;
+}
+
 .h-90rem {
     height: 90rem;
 }
 
-.min-w-24rem {
-    min-width: 24rem;
+.w-85 {
+    width: 85%;
+}
+
+.min-w-16 {
+    min-width: 16rem;
+}
+
+.min-w-34 {
+    min-width: 34rem;
 }
 
 .font-mine {
@@ -19,11 +38,22 @@ header {
     background-size: cover;
     background-position: center;
 }
-#navBar ul li:hover, #searchBar button:hover{
+#navBar ul li:hover, #searchBar button:hover, .gameContainer:hover{
     background-color: #4b68a5;
+    cursor: pointer;
 }
-@media (hover: hover) {
-    img:hover{
-        opacity: 50%;
+@media (min-width: 1024px) {
+    .min-w-34-lg {
+        min-width: 34rem;
+    }
+
+    .min-w-16-lg {
+        min-width: 16rem;
+    }
+}
+
+@media (min-width: 1536px) {
+    .min-w-34-xl {
+        min-width: 34rem;
     }
 }

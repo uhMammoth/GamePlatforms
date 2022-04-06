@@ -5,6 +5,10 @@
     src: local('Minecraft'), url('https://fonts.cdnfonts.com/s/36662/MinecraftTen-VGORe.woff') format('woff');
 }
 
+h1, #navBar ul li a {
+    font-family: 'Minecraft', Arial, Helvetica, sans-serif;
+}
+
 .h-90rem {
     height: 90rem;
 }

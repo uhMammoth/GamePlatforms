@@ -1,6 +1,7 @@
 // Get Game info
 var searchedList;
 
+//converts epoch todays date to YYY-MM-DD format
 var convertDate = function(num){
   var myDate = new Date(num);
   var monthDayYear = myDate.toLocaleString().split(',')[0];
@@ -15,6 +16,7 @@ var convertDate = function(num){
   return date;
 }
 
+//
 var gameSubmit = function(event) {
     $('#listGames').remove();
     event.preventDefault();
@@ -27,6 +29,7 @@ var gameSubmit = function(event) {
   
 }
 
+//
 function getRawgapi(gameName) {
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var apiUrl = "https://api.rawg.io/api/games?key=" + apiKey +"&search="+ gameName.replace(/\s/g, "-") +"&search_exact=true&ordering=-metacritic";
@@ -36,6 +39,7 @@ function getRawgapi(gameName) {
     .then(data => displayGameData(data));
 }
 
+//
 function dropDown(data){
     $("#searchBar")
   .append("<select name='game' id='listGames' class='w-1/4 text-base lg:text-xl lg:w-1/4 lg:p-3 sm:p-1'></select>");
@@ -48,6 +52,7 @@ function dropDown(data){
   
 }
 
+//
 function embedVideo(data){
 console.log(data);
 var videoId = data.items[0].id.videoId;
@@ -56,11 +61,13 @@ $("#trailer").empty()
 .append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
 }
 
+//
 function displayGameData(data) {
   searchedList = data.results;
   dropDown(data);
 }
 
+//
 function fetchGame(){
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var slug;
@@ -86,6 +93,7 @@ function fetchGame(){
       .then(data => gameHandler(data));
 }
 
+//
 function gameHandler(data) {
   console.log(data);
   //get img title metascore platforms description
@@ -117,33 +125,60 @@ function gameHandler(data) {
   $('#gameDashboard').css('display', 'flex');
 }
 
-// Jin starts here //
+//loads localstorage for 'history'
+function loadHistory(){
+  var history = JSON.parse(localStorage.getItem('history'));
+  if(history == null){
+    history = [];
+    history[5] = {date: '0'};
+  }
+  return history;
+}
+
+function saveHistory(history){
+  localStorage.setItem('history', JSON.stringify(history));  
+}
 
 // API for released game list
 var releasedGames = function() {
   var date = new Date();
   var endDate = convertDate(date.getTime());
   var startDate = convertDate(date.getTime() - 2592000*1000); 
-
+  
   // set dates range = 1st of this month to today
   var apiUrl = 
   "https://api.rawg.io/api/games?key=ff8332b243a54f7db9e5249071a23ba5&metacritic=75,100&dates="+startDate+","+endDate+"&ordering=-metacritic&page_size=5";
 
-  fetch(apiUrl).then(function(response) {
 
-    if(response.ok) {
-      response.json().then(function(data) {
-      releaseContainer(data.results);        
-      
-      })
-    }        
-  })
- 
+  var history = loadHistory();
+  //loadhistory if arr[0] != endDate(today) then fetch
+  if(history[5].date != endDate){
+    history[5] = {date: endDate};
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => updateArray(data.results, history));
+  } 
+  else if (history[5].date == endDate){
+    releaseContainer(history);
+  }
+}
+
+//
+function updateArray(data, history){
+  for (let i = 0; i < data.length; i++) {
+    history[i] = {
+      id: data[i].id,
+      name: data[i].name,
+      background_image: data[i].background_image
+    };
+
+  }
+  saveHistory(history);
+  releaseContainer(history);
 }
 
 // Set release games container
 var releaseContainer = function(games) {
-  
     for (var i = 0; i < games.length; i++) {
       var releaseContainerEl = document.querySelector("#release-container");
       var gameContainer = document.createElement("div");
@@ -152,15 +187,10 @@ var releaseContainer = function(games) {
       gameContainer.setAttribute('gameName', games[i].name);
 
       var getSpan = document.createElement("span");
-
       getSpan.classList = "text-white text-xl";
-
       var getImgCont = document.createElement("div");
-
       getImgCont.classList = "container border-2 border-zinc-800 mt-2 h-60";
-
       var getImgSrc = document.createElement("img");
-
       getImgSrc.classList = "object-fill h-full w-full";
 
       releaseContainerEl.append(gameContainer);
@@ -181,6 +211,7 @@ var releaseContainer = function(games) {
     }
 }
 
+//
 releasedGames();
 $('#searchBar').on("submit", gameSubmit);
 $(document).on('change', '#listGames', fetchGame);

@@ -130,7 +130,7 @@ function loadHistory(){
   var history = JSON.parse(localStorage.getItem('history'));
   if(history == null){
     history = [];
-    history[5] = {date: '0'};
+    history.push({date: '0'});
   }
   return history;
 }
@@ -152,27 +152,27 @@ var releasedGames = function() {
 
   var history = loadHistory();
   //loadhistory if arr[0] != endDate(today) then fetch
-  if(history[5].date != endDate){
-    history[5] = {date: endDate};
+  if(history.at(-1).date != endDate){
+    history.pop();
     fetch(apiUrl)
     .then(response => response.json())
-    .then(data => updateArray(data.results, history));
+    .then(data => updateArray(data.results, history, endDate));
   } 
-  else if (history[5].date == endDate){
+  else if (history.at(-1).date == endDate){
     releaseContainer(history);
   }
 }
 
 //
-function updateArray(data, history){
+function updateArray(data, history, endDate){
   for (let i = 0; i < data.length; i++) {
     history[i] = {
       id: data[i].id,
       name: data[i].name,
       background_image: data[i].background_image
     };
-
   }
+  history.push({date: endDate});
   saveHistory(history);
   releaseContainer(history);
 }

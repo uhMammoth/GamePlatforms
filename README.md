@@ -1,5 +1,29 @@
 # GamePlatforms
-This application can search a game title via API1 and API2 and provide details of said game.
+
+## Description
+This application can search a game title via API1 and API2 and provide details of said game. Search your game in the search bar, pick specific game title. Then all information about game is displayed, along with a trailer of the game. The sidebar displays the newest popular released games, which your able to click on to find out more about it and watch trailer to see if its a game you might enjoy.
+
+## Built
+* HTML
+* CSS
+* JavaScript
+* Tailwind
+* jQuery
+
+## API's Used
+* https://rawg.io/apidocs 
+* https://developers.google.com/youtube/v3 
+
+## Screenshot
+
+![Image of deployed application.](./assets/images/GamePlatformProject.png)
+
+## Link
+
+https://uhmammoth.github.io/GamePlatforms/
+
+https://github.com/uhMammoth/GamePlatforms.git
+
 ## Requirements
 ```
 Use a CSS framework other than Bootstrap.

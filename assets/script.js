@@ -179,7 +179,7 @@ function updateArray(data, history){
 
 // Set release games container
 var releaseContainer = function(games) {
-    for (var i = 0; i < games.length; i++) {
+    for (var i = 0; i < games.length-1; i++) {
       var releaseContainerEl = document.querySelector("#release-container");
       var gameContainer = document.createElement("div");
       gameContainer.classList = "gameContainer container bg-zinc-800 border-2 p-2 my-3 border-content h-80 text-center";

@@ -16,7 +16,7 @@ var convertDate = function(num){
   return date;
 }
 
-//
+//Get the searched input for gameName.
 var gameSubmit = function(event) {
     $('#listGames').remove();
     event.preventDefault();
@@ -29,7 +29,7 @@ var gameSubmit = function(event) {
   
 }
 
-//
+//Takes search of gameName and api key then inputs them in the api URL then makes the fetch request.
 function getRawgapi(gameName) {
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var apiUrl = "https://api.rawg.io/api/games?key=" + apiKey +"&search="+ gameName.replace(/\s/g, "-") +"&search_exact=true&ordering=-metacritic";
@@ -39,7 +39,7 @@ function getRawgapi(gameName) {
     .then(data => displayGameData(data));
 }
 
-//
+//Gets the data results of the searched game name with it index value then is displayed as a dropdown list.
 function dropDown(data){
     $("#searchBar")
   .append("<select name='game' id='listGames' class='w-1/4 text-base lg:text-xl lg:w-1/4 lg:p-3 sm:p-1'></select>");
@@ -52,7 +52,7 @@ function dropDown(data){
   
 }
 
-//
+//Takes the first video of the data items results then embeds the video to the html.
 function embedVideo(data){
 console.log(data);
 var videoId = data.items[0].id.videoId;
@@ -93,11 +93,9 @@ function fetchGame(){
       .then(data => gameHandler(data));
 }
 
-//
+//Get the data then displays the img, name, description, metacritic, released date and the list of platforms.
 function gameHandler(data) {
   console.log(data);
-  //get img title metascore platforms description
-  //add and create elements to main game display board
   var img = data.background_image;
 
   $("#gameImg").empty()

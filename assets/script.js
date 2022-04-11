@@ -61,13 +61,13 @@ $("#trailer").empty()
 .append("<iframe width='503' height='280' src="+ trailerVi +" frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>");
 }
 
-//
+//takes the data from RAWG api fetch and assigns to global variable also sends data to where the dropdown menu will be created
 function displayGameData(data) {
   searchedList = data.results;
   dropDown(data);
 }
 
-//
+//handles which fetch request to initiate. Checks if the user entered a game to search or if they clicked on the new hot releases section then runs fetch for both API's
 function fetchGame(){
   var apiKey = "ff8332b243a54f7db9e5249071a23ba5";
   var slug;
@@ -161,7 +161,7 @@ var releasedGames = function() {
   }
 }
 
-//
+//this is where the history array is assigned then saved/displayed in the new hot releases section
 function updateArray(data, history, endDate){
   for (let i = 0; i < data.length; i++) {
     history[i] = {
@@ -209,7 +209,7 @@ var releaseContainer = function(games) {
     }
 }
 
-//
+
 releasedGames();
 $('#searchBar').on("submit", gameSubmit);
 $(document).on('change', '#listGames', fetchGame);
